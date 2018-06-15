@@ -1,6 +1,6 @@
 package com.aberkunsky.testproject.controller;
 
-import com.aberkunsky.testproject.Exceptions.UserNotFoundException;
+import com.aberkunsky.testproject.exceptions.UserNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

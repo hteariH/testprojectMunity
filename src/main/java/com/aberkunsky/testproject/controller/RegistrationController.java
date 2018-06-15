@@ -1,16 +1,11 @@
 package com.aberkunsky.testproject.controller;
 
-import com.aberkunsky.testproject.Exceptions.UserNotFoundException;
+import com.aberkunsky.testproject.exceptions.UserNotFoundException;
 import com.aberkunsky.testproject.Validator.UserValidator;
 import com.aberkunsky.testproject.model.User;
 import com.aberkunsky.testproject.service.UserService;
 import com.aberkunsky.testproject.userrepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

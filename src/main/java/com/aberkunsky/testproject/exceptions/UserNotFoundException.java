@@ -1,4 +1,4 @@
-package com.aberkunsky.testproject.Exceptions;
+package com.aberkunsky.testproject.exceptions;
 
 /**
  * user: alekseyb
