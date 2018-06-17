@@ -1,5 +1,7 @@
 package com.aberkunsky.testproject.service;
 
+import com.aberkunsky.testproject.dto.UserDTO;
+import com.aberkunsky.testproject.encoder.BCryptPasswordEncoder;
 import com.aberkunsky.testproject.model.User;
 import com.aberkunsky.testproject.userrepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,22 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void saveUser(User user) {
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
+    public void saveUser(UserDTO user) {
         User localUser = userRepository.findByUserName(user.getUserName());
         if(localUser != null){
             System.out.println("user "+localUser.getUserName()+" alredy exists");
         } else {
-            userRepository.save(user);
+            System.out.println("user ");
+            User u = new User();
+            u.setFirstName(user.getFirstName());
+            u.setLastName(user.getLastName());
+            u.setUserName(user.getUserName());
+            u.setHashedPassword(passwordEncoder.hashPassword(user.getPlainTextPassword()));
+            System.out.println(u);
+            userRepository.save(u);
         }
     }
 

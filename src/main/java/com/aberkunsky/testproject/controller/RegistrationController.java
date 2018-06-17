@@ -1,8 +1,7 @@
 package com.aberkunsky.testproject.controller;
 
+import com.aberkunsky.testproject.dto.UserDTO;
 import com.aberkunsky.testproject.exceptions.UserNotFoundException;
-import com.aberkunsky.testproject.Validator.UserValidator;
-import com.aberkunsky.testproject.model.User;
 import com.aberkunsky.testproject.service.UserService;
 import com.aberkunsky.testproject.userrepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,8 @@ public class RegistrationController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserValidator userValidator;
-
     @RequestMapping(method = RequestMethod.POST, path = "/userservice/register")
-    public User registerUser(@RequestBody User user) throws UserNotFoundException {
-//        Errors errors = new FieldError();
-//        userValidator.validate(user,);
+    public UserDTO registerUser(@RequestBody UserDTO user) throws UserNotFoundException {
         if(userService.findByUserName(user.getUserName())!=null){
             throw new UserNotFoundException(user.getUserName());
         }
