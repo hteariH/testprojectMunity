@@ -21,22 +21,17 @@ public class UserService {
     BCryptPasswordEncoder passwordEncoder;
 
     public void saveUser(UserDTO user) {
-        User localUser = userRepository.findByUserName(user.getUserName());
-        if(localUser != null){
-            System.out.println("user "+localUser.getUserName()+" alredy exists");
-        } else {
-            System.out.println("user ");
-            User u = new User();
-            u.setFirstName(user.getFirstName());
-            u.setLastName(user.getLastName());
-            u.setUserName(user.getUserName());
-            u.setHashedPassword(passwordEncoder.hashPassword(user.getPlainTextPassword()));
-            System.out.println(u);
-            userRepository.save(u);
-        }
+
+        User u = new User();
+        u.setFirstName(user.getFirstName());
+        u.setLastName(user.getLastName());
+        u.setUserName(user.getUserName());
+        u.setHashedPassword(passwordEncoder.hashPassword(user.getPlainTextPassword()));
+        userRepository.save(u);
+
     }
 
-    public User findByUserName(String username){
+    public User findByUserName(String username) {
         return userRepository.findByUserName(username);
     }
 }

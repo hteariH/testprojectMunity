@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RegistrationController {
     @Autowired
-    UserRepository userRepository;
-    @Autowired
     UserService userService;
 
     @RequestMapping(method = RequestMethod.POST, path = "/userservice/register")
@@ -27,7 +25,6 @@ public class RegistrationController {
             throw new UserNotFoundException(user.getUserName());
         }
         userService.saveUser(user);
-        System.out.println(userRepository.findAll());
         return user;
     }
 }
